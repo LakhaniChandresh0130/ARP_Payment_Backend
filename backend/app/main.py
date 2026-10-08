@@ -159,7 +159,7 @@ async def poll_events():
                 if events:
                     print(f"[Poller] Found {len(events)} unprocessed event(s)")
                 for ev in events:
-                    dispatch_event(ev)
+                    await asyncio.to_thread(dispatch_event, ev)
             except Exception as e:
                 print(f"[Poller] Error: {e}")
 
